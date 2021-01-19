@@ -1,0 +1,17 @@
+{
+  "name": "restfulrealm",
+  "version": "1.0.0",
+  "description": "Restful with Realm",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alberto",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "promise": "^8.1.0",
+    "realm": "^10.1.2"
+  }
+}

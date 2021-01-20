@@ -3,7 +3,7 @@ const USER_SCHEMA = "User"
 const ADDRESS_SCHEMA = "Address"
 const Promise = require('promise')
 
-const AddressSchema = {
+/*const AddressSchema = {
     name: ADDRESS_SCHEMA,    
     primaryKey: 'id',
     properties: {
@@ -12,7 +12,7 @@ const AddressSchema = {
         city: 'string',        
         state: 'string?',//optional property        
     }
-}
+}*/
 
 const UserSchema = {
     name: USER_SCHEMA,
@@ -20,13 +20,13 @@ const UserSchema = {
     properties: {
         id: 'int',    // primary key
         name: { type: 'string', indexed: true },
-        email: 'string',  
-        addresses: { type: 'list', objectType:  ADDRESS_SCHEMA},              
+        email: 'string'/*,  
+        addresses: { type: 'list', objectType:  ADDRESS_SCHEMA},    */          
     }
 }
 const databaseOptions = {
     path: 'RealmInNodeJS.realm',
-    schema: [UserSchema, AddressSchema],
+    schema: [UserSchema],
     schemaVersion: 0, //optional    
 }
 
@@ -81,7 +81,7 @@ const updateAnUser = (userId, updatingUser) => new Promise((resolve, reject) => 
         });
     }).catch((error) => reject(error))
 })
-
+/*
 //functions for AddressSchema
 const insertAddressToUser = (userId, addressObject) => new Promise((resolve, reject) => {                
     Realm.open(databaseOptions).then(realm => {        
@@ -102,7 +102,7 @@ const insertAddressToUser = (userId, addressObject) => new Promise((resolve, rej
         })
     }).catch((error) => reject(error))
 })
-
+*/
 const deleteUser = (userId) => new Promise((resolve, reject) => {
     Realm.open(databaseOptions).then(realm => {
         let userObject = realm.objectForPrimaryKey(USER_SCHEMA, userId);                
@@ -127,6 +127,6 @@ module.exports =  {
     insertNewUser,  
     filterUsersByName, 
     updateAnUser,
-    insertAddressToUser,
+   // insertAddressToUser,
     deleteUser
 }
